@@ -85,7 +85,7 @@ int consulta() //Função responsável por cunsultar usuários no sistema
     while (fgets(conteudo, 200, file) != NULL) //Ler enquanto tiver algo no arquivo, no máximo 200 caracteres //while = enquanto //fgats() lê o arquivo
     {
         printf("\nEssas são as informações do usuário: ");
-        printf("%s", conteudo); 
+        printf("%s", conteudo); //Escreve o que foi armazenado e lido
         printf("\n\n");
     }
     
@@ -101,18 +101,18 @@ int deletar() //Função responsável por deletar usuários do sistema
     scanf("%s", cpf);
     
     FILE *file;
-    file = fopen(cpf, "r");
-    fclose(file);
+    file = fopen(cpf, "r"); //Abre e lê o arquivo
+    fclose(file); //Fecha o arquvo
     
-    if (file == NULL)
+    if (file == NULL) //Se o arquivo for igual a nulo(ou seja, não exista)
     {
         printf("CPF não encontrado!\n");
         system("pause");
     }
 
-      if (file != NULL)
+      if (file != NULL) //Se o arquivo for diferente de nulo(ou seja, exista)
     {
-        remove(cpf);
+        remove(cpf); //Remove o arquivo
         printf("CPF deletado com sucesso!\n");
         system("pause");
     }
@@ -138,6 +138,7 @@ int main()
         printf("\t1 - Registrar nome\n");
         printf("\t2 - Consultar nome\n");
         printf("\t3 - Deletar nome\n\n"); 
+        printf("\t4 - Sair do sitema\n\n");
         printf("opção: "); //Fim do menu
 
         scanf("%d", &opcao); //Armazena a opção do usuário 
@@ -156,6 +157,11 @@ int main()
 
             case 3:
             deletar();
+            break;
+            
+            case 4:
+            printf("Obrigado por utilizar o sitema!\n");
+            return 0;
             break;
 
             default:
